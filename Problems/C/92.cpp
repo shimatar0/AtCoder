@@ -3,41 +3,43 @@
 using namespace std;
 typedef long long ll;
 
-int main(){
-	int n; cin >> n;
-	vector<int> A(n), B(n),C(n);
-	for(int i = 0; i < n; i++){
-		cin >> A[i];
+int main() {
+	int l;
+	cin >> l;
+	vector<int>n(5);	
+	for(int i = 0; i < l; i++){
+		string s;
+		cin >> s;
+		if(s[0] == 'M'){
+			n[0]++;
+		}else if(s[0] == 'A'){
+			n[1]++;
+		}else if(s[0] == 'R'){
+			n[2]++;
+		}else if(s[0] == 'C'){
+			n[3]++;
+		}else if(s[0] == 'H'){
+			n[4]++;
+		}
 	}
 
-	B = A;
-	C = A;
-
-	sort(B.begin(), B.end());
-	sort(A.begin(), A.end(),greater<int>());
-
-	int max_num = A[0];
-	int sub_max = A[1];
-
-	int min_num = B[0];
-	int sub_min = B[1];
-
-	for(int i = 0; i < n; i++){
-		int Max = max_num;
-		int Min = min_num;
-		if(max_num > 0 && Max == C[i]){
-			Max = sub_max;
+	ll ans = 0;
+	for(int bit = 0; bit < (1<<5); bit++){
+		int bitNum = 0;
+		for(int i = 0; i < 5; i++){
+			if(bit & (1 << i)) bitNum++;
+		}
+		if (bitNum != 3) continue;
+	
+		ll temp = 1;
+		for(int k = 0; k < 5; k++){
+			if(bit & (1 << k)){
+				temp *= n[k];
+			}
 		}
 
-		if(min_num < 0 && Min == C[i]){
-			Min = sub_min;
-		}
-
-		Max = max(0, Max);
-		Min = min(0, Min);
-
-		cout << Max * 2 + Min * 2 * (-1) << endl;
-
+		ans += temp;
 	}
 
+	cout << ans << endl;
 }

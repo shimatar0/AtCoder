@@ -4,14 +4,13 @@
 
 -   #include <bits/stdc++.h>
 
-
 ---
 
 ### ソート
 - 昇順
     sort(X, X + M);
 - 降順
-    3つめの引数に　greater<型>() を追加。
+    3つめの引数にgreater<型>() を追加。
 
 ---
 
@@ -77,9 +76,11 @@
 -	pair.first , pair.second
 
 #### vector の ペアの宣言
+-   二次元配列 vector<vector<int>>
 -	vector< pair <long , long> > pair(n);
 -	ソート
 -	sort(pair.begin(), pair.end());
+
 ---     
 
 ### map
@@ -116,7 +117,6 @@
                     S.push_back(i);
                 }
             }
-
             cout << bit << ": {";
             for (int i = 0; i < (int)S.size(); ++i) {
                 cout << S[i] << " ";
@@ -125,6 +125,50 @@
         }
     }
 
+- ABC147_C問題
+  
 ### 表示
 #### 小数点以下10桁表示する。
 -     cout << fixed << setprecision(10) << ans << endl;
+
+#### 座標系  
+-   B/75.cpp参照
+
+### 便利な関数  
+
+####  桁数数え上げ
+
+-  ll keta(ll c){
+        ll ret = 0;
+        while(c){
+            c /= 10;
+            ret++;
+        }
+        return ret;
+    }
+
+#### 素数判定
+- エラトステネスでは求められないなら、愚直で。
+
+##### エラトステネスの篩
+- 制約条件 1 <= n <= 10^6
+bool primeNumber(ll n){
+    if(n < 2) return false;
+    else{
+        for(int i = 2; i * i <= n; i++){
+            if(n % i == 0) return false;
+        }
+        return true;
+    }
+}
+
+##### 愚直
+bool primeNumber(int n){
+    if(n < 2) return false;
+    else{
+        for(int i = 2; i * i <= n; i++){
+            if(n % i == 0) return false;
+        }
+        return true;
+    }
+}
