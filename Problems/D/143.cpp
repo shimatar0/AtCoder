@@ -18,6 +18,5 @@ int main(){
 			ans += max(k - (j+1), 0);
 		}
 	}
-
 	cout << ans << endl;
 }
