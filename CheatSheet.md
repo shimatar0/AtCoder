@@ -172,3 +172,26 @@ bool primeNumber(int n){
         return true;
     }
 }
+
+### 区間分割
+
+        // 区間分割する
+        int i = 0;
+        while (i < N) {
+            if (h[i] == 0) ++i; // 0 なら何もせずに次に進む
+            else {
+                ++res; // 区間の始まり
+                while (i < N && h[i] > 0) {
+                    ++i; // 区間の終わりまで一気に
+                }
+            }
+        }
+
+#### N!の経路の全探索
+
+### next_permutaition関数
+    - 計算量 O(N!N)
+    do {
+            for(int i = 0; i < N - 1; i++) sum += dist(v[i], v[i+1]);
+        } while(next_permutation(v.begin(), v.end()));
+
