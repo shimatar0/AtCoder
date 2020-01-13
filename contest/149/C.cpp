@@ -13,7 +13,7 @@ bool primeNumber(ll n){
     }
 }
 
-int main() {
+int main(){
     ll x;
     cin >>  x;
     ll ans = 0;
